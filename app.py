@@ -146,6 +146,9 @@ def edit_student(id):
         student = db.session.execute(text(f"SELECT * FROM student WHERE id={id}")).fetchone()
         return render_template('edit.html', student=student)
 
+def internal_error(e):
+    return render_template('500.html'), 500
+
 # if __name__ == '__main__':
 #     with app.app_context():
 #         db.create_all()
@@ -153,5 +156,5 @@ def edit_student(id):
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=False)
 
